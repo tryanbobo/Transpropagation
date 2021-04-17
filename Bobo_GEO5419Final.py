@@ -3,11 +3,11 @@ from arcpy import env
 from arcpy.sa import *
 import math
 
-
+path = r"C:\Users\tb1302\Documents\GEO5419\Project\data"
 arcpy.env.workspace = path
 arcpy.env.overwriteOutput = True
 
-path = r"C:\Users\tb1302\Documents\GEO5419\Project\data"
+
 dataOut = path + "\dataOut"
 try:
     if arcpy.CheckExtension("Spatial") == "Available":
@@ -22,7 +22,8 @@ except:
 
 def eucDistance():
 
-    apFc = path + "\WAP_StudyArea.shp"
+    #apFc = path + "\WAP_StudyArea.shp"
+    apFc = path + "\RADIO_POINTS_TXST.shp"
     rast = path + r"\dem_quad_50cm\dem_quad_50cm.tif"
     studyArea = "\StudyArea.shp"
     Gt = 28
@@ -55,10 +56,20 @@ def eucDistance():
         #apply friis ect. transmission equations...
         #if user input picking different eqs
         # Example Friis EQ: 28 * 3 * 2.2 *  Square(.0559 / (4 * 3.14 *  Raster("distMint")))
-        # Convert WATTS to dBm: 10 * Log10(1000*"rssW")
-        outFriis = Gt * Gr * Pt * Square(lambduh / 4 * math.pi * outEucDistance)
-        outFriis.save("friisOut%s" %FID)
 
+        outFriis = Gt * Gr * Pt * Square(lambduh / 4 * math.pi * outEucDistance)
+        print("Created Friis calculation of layer %s" % FID)
+        #outFriis.save("friisOut%s" %FID)
+        # Convert WATTS to dBm: 10 * Log10(1000*"rssW")
+        convertdBm = 10 * Log10(1000*outFriis)
+        #convertdBm.save("friisOutdBm%s" %FID)
+        print("Converted Watts to dBm for layer %s" % FID)
+
+        viewShed = Viewshed(rast, "indLyr%s"%FID)
+        #viewShed.save("viewShedOut%s" %FID)
+
+        friisView = viewShed * convertdBm
+        friisView.save("friisView%s" %FID)
 eucDistance()
 
 

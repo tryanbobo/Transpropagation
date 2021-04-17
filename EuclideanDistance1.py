@@ -23,3 +23,60 @@ if __name__ == '__main__':
     with arcpy.EnvManager(extent="599542.22 3305380.97 605624.72 3310630.97", mask="EucDist1", outputCoordinateSystem="PROJCS['NAD_1983_StatePlane_Texas_South_Central_FIPS_4204_Feet',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Lambert_Conformal_Conic'],PARAMETER['False_Easting',1968500.0],PARAMETER['False_Northing',13123333.33333333],PARAMETER['Central_Meridian',-99.0],PARAMETER['Standard_Parallel_1',28.38333333333333],PARAMETER['Standard_Parallel_2',30.28333333333333],PARAMETER['Latitude_Of_Origin',27.83333333333333],UNIT['Foot_US',0.3048006096012192]]", 
                           scratchWorkspace=r"C:\Users\tb1302\Documents\GEO5418\ProjectFiles\5418Project\5418Project.gdb", workspace=r"C:\Users\tb1302\Documents\GEO5418\ProjectFiles\5418Project\5418Project.gdb"):
         Model1(*argv[1:])
+
+
+
+
+
+
+
+
+
+
+sql = """ "Shape_Length" < 20000 """
+
+arcpy.SelectLayerByAttribute_management("Rivers.shp", "NEW_SELECTION", sql)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+strSQL = """ "District" = 'Austin ISD'"""
+arcpy.MakeFeatureLayer_management("Schools.shp", "inLyr")
+arcpy.SelectLayerByAttribute_management(" inLyr", "NEW_SELECTION", strSQL)
+arcpy.CopyFeatures_management("inLyr", "schools_austin")
+
+strSQL = """ NOT "District" = 'Austin ISD'"""
+arcpy.MakeFeatureLayer_management("Schools.shp", "inLyr")
+arcpy.SelectLayerByAttribute_management(" inLyr", "NEW_SELECTION", strSQL)
+arcpy.CopyFeatures_management("inLyr", "schools_not_austin")
+
+arcpy.MakeFeatureLayer_management("schools_not_austin", "schools_not_austin_lyr")
+arcpy.SelectLayerByLocation_management ("schools_not_austin_lyr", "WITHIN_A_DISTANCE", "outLyr", 5000)
+arcpy.CopyFeatures_management("schools_austin_lyr", "selected_schools")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
