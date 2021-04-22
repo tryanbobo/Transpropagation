@@ -24,9 +24,10 @@ except:
 
 def eucDistance():
 
-    #apFc = path + "\WAP_StudyArea.shp"
-    apFc = path + "\RADIO_POINTS_TXST.shp"
-    rast = path + r"\dem_quad_50cm\dem_quad_50cm.tif"
+    #apFc = path + "\RADIO_POINTS_TXST.shp"
+    apFc = arcpy.GetParameterAsText(0)
+    #rast = path + r"\dem_quad_50cm\dem_quad_50cm.tif"
+    rast = arcpy.GetParameterAsText(1)
     studyArea = "\StudyArea.shp"
     ############################Radio Variables############################
     #specs for ruckus T610(used at TXST): Gt = 6dBm, Pt = 28dBm
@@ -38,50 +39,37 @@ def eucDistance():
         #U-NII-3 (5.725-5.85GHz)
     #Gain:
         # Up to 6dBm
-    Gt = 6 #0.0079432823472#6 #Watts or 6 dBm #Transmitter Gain () convert from decibels to a power ratio
-    Gr = 2 #0.0031628 #Watts#2-5 dBd common with mobile phones#Receiver Gain () convert from decibels to a power ratio
-    Pt = 28# 1 Watts or 28dBm (Transmitter Power (Watts))
+    Gt = arcpy.GetParameterAsText(2)#6 # dBm Transmitter Gain () convert from decibels to a power ratio
+    Gr = arcpy.GetParameterAsText(3)#2 #0.0031628 #Watts#2-5 dBd common with mobile phones#Receiver Gain () convert from decibels to a power ratio
+    Pt = arcpy.GetParameterAsText(4)#28# 1 Watts or 28dBm (Transmitter Power (Watts))
     #Pr = to value we are solving for is measured in Watts
     c = 299792458 # speed of light in m/s
-    f = 2400000000 # need to convert Ghz to Hz
-    lambduh = 0.1249 #c/f # = c/f (c=speed of light in m/s & f=frequency in Hz)
+    #f = arcpy.GetParameterAsText(5) * 1000000000 #2400000000 # need to convert Ghz to Hz
+    lambduh = 0.1249 #c/f (c=speed of light in m/s & f=frequency in Hz)
                     # c = 300,000,000 m/s
 
     friisList = []
     FIDnum = []
-    #cursor = arcpy.SearchCursor(apFc, ["FID"])
-    #for row in cursor:
+
     with arcpy.da.SearchCursor(apFc, ["FID"]) as cursor:
         for row in cursor:
             FIDnum.append(row[0])
-        #MakeFeatureLayer_management()
-        #out = arcpy.MakeFeatureLayer_management(row[0], "indWAP%s" %i)
-        #CopyFeatureLayer_management()
-        #arcpy.CopyFeatures_management(out, "WAPout%s" %i)
-        #print("Created layer %s" %i)
+
     for FID in FIDnum:
 
         arcpy.MakeFeatureLayer_management(apFc, "indLyr%s"%FID, "\"FID\" = %s" %FID)
         #arcpy.CopyFeatures_management("indLyr%s"%FID, "WAPLyrOut%s"%FID)
         print("Created layer %s" %FID)
-        #outEucDistance =
-        #how do you make units global for multiple users???
+
         outEucDistance = EucDistance("indLyr%s"%FID, cell_size = rast)
         print("Created Euclidean Distance of layer %s" % FID)
         #outEucDistance.save('dist_%s' %FID)
 
         #apply friis ect. transmission equations...
-        #if user input picking different eqs
-        # Example Friis EQ: 28 * 3 * 2.2 *  Square(.0559 / (4 * 3.14 *  Raster("distMint")))
 
-        #outFriis = Gt * Gr * Pt * Square(lambduh / 4 * math.pi * (outEucDistance * .3048))
         outFriis = Gt + Gr + Pt + (20 *Log10(lambduh / (4 * 3.14 * outEucDistance * .3048)))
         print("Created Friis calculation of layer %s" % FID)
         #outFriis.save("friisOut%s.tif" %FID)
-        # Convert WATTS to dBm: 10 * Log10(1000*"rssW")
-        #convertdBm = 10 * Log10(1000*outFriis)
-        #convertdBm.save("friisOutdBm%s" %FID)
-        #print("Converted Watts to dBm for layer %s" % FID)
 
         viewShed = Viewshed(rast, "indLyr%s"%FID)
         #viewShed.save("viewShedOut%s" %FID)
@@ -96,6 +84,7 @@ def eucDistance():
         #if i = True #need this to be if the statType is checked in the tool. for multiple outputs
 
     outCellStats = CellStatistics(friisList, "MINIMUM", "NODATA", "SINGLE_BAND")
-    outCellStats.save("CellStats.tif")
+    cellStatsOut = arcpy.GetParameterAsText(6)
+    outCellStats.save(cellStatsOut)
     print(friisList)
 eucDistance()
