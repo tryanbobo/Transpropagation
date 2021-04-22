@@ -1,7 +1,7 @@
 import arcpy
-from arcpy import env
 from arcpy.sa import *
-import math
+from ExtractData import LicenseError
+
 
 path = r"C:\Users\tb1302\Documents\GEO5419\Project\data"
 arcpy.env.workspace = path
@@ -19,6 +19,8 @@ except LicenseError:
     print("Spatial Analyst license is unavailable")
 except:
     print(arcpy.GetMessages(2))
+
+
 
 def eucDistance():
 
@@ -44,8 +46,7 @@ def eucDistance():
     f = 2400000000
     lambduh = 0.1249 #c/f # = c/f (c=speed of light in m/s & f=frequency in Hz)
                     # c = 300,000,000 m/s
-    outFriis = 28 + 6 + 2 + 20 * Log10((.1248 / 4 * 3.14 * 40))
-    print(outFriis)
+
 
     FIDnum = []
     #cursor = arcpy.SearchCursor(apFc, ["FID"])
@@ -67,25 +68,28 @@ def eucDistance():
         #how do you make units global for multiple users???
         outEucDistance = EucDistance("indLyr%s"%FID, cell_size = rast)
         print("Created Euclidean Distance of layer %s" % FID)
-        outEucDistance.save('dist_%s' %FID)
+        #outEucDistance.save('dist_%s' %FID)
 
         #apply friis ect. transmission equations...
         #if user input picking different eqs
         # Example Friis EQ: 28 * 3 * 2.2 *  Square(.0559 / (4 * 3.14 *  Raster("distMint")))
 
         #outFriis = Gt * Gr * Pt * Square(lambduh / 4 * math.pi * (outEucDistance * .3048))
-        outFriis = Gt + Gr + Pt + (20 *Log10((lambduh / 4 * 3.14 * (outEucDistance * .3048))))
+        outFriis = Gt + Gr + Pt + (20 *Log10(lambduh / (4 * 3.14 * outEucDistance * .3048)))
         print("Created Friis calculation of layer %s" % FID)
-        outFriis.save("friisOut%s.tif" %FID)
+        #outFriis.save("friisOut%s.tif" %FID)
         # Convert WATTS to dBm: 10 * Log10(1000*"rssW")
         #convertdBm = 10 * Log10(1000*outFriis)
         #convertdBm.save("friisOutdBm%s" %FID)
         #print("Converted Watts to dBm for layer %s" % FID)
 
-        #viewShed = Viewshed(rast, "indLyr%s"%FID)
+        viewShed = Viewshed(rast, "indLyr%s"%FID)
         #viewShed.save("viewShedOut%s" %FID)
 
-        #friisView = viewShed * convertdBm
-        #friisView.save("friisView%s.tif" %FID)
-
+        friisView = viewShed * outFriis
+        friisView.save("friisView%s.tif" %FID)
+        friisList = []
+        friisList.append(str(friisView))
+    outCellStats = CellStatistics(friisList, "MEAN", "NODATA", "SINGLE_BAND")
+    outCellStats.save("CellStats.tif")
 eucDistance()
