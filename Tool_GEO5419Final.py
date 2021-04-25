@@ -1,4 +1,5 @@
 import arcpy
+import sys
 from arcpy.sa import *
 from ExtractData import LicenseError
 
@@ -39,9 +40,9 @@ def eucDistance():
         #U-NII-3 (5.725-5.85GHz)
     #Gain:
         # Up to 6dBm
-    Gt = arcpy.GetParameterAsText(2)#6 # dBm Transmitter Gain () convert from decibels to a power ratio
-    Gr = arcpy.GetParameterAsText(3)#2 #0.0031628 #Watts#2-5 dBd common with mobile phones#Receiver Gain () convert from decibels to a power ratio
-    Pt = arcpy.GetParameterAsText(4)#28# 1 Watts or 28dBm (Transmitter Power (Watts))
+    Gt = arcpy.GetParameter(2)#6 # dBm Transmitter Gain () convert from decibels to a power ratio
+    Gr = arcpy.GetParameter(3)#2 #0.0031628 #Watts#2-5 dBd common with mobile phones#Receiver Gain () convert from decibels to a power ratio
+    Pt = arcpy.GetParameter(4)#28# 1 Watts or 28dBm (Transmitter Power (Watts))
     #Pr = to value we are solving for is measured in Watts
     c = 299792458 # speed of light in m/s
     #f = arcpy.GetParameterAsText(5) * 1000000000 #2400000000 # need to convert Ghz to Hz
@@ -56,35 +57,61 @@ def eucDistance():
             FIDnum.append(row[0])
 
     for FID in FIDnum:
+        try:
+            # create separate feature layer for each point in the input feature class
+            arcpy.MakeFeatureLayer_management(apFc, "indLyr%s"%FID, "\"FID\" = %s" %FID)
+            #arcpy.CopyFeatures_management("indLyr%s"%FID, "WAPLyrOut%s"%FID)
+            print("Created layer %s" %FID)
+            arcpy.AddMessage("Created layer %s" %FID)
+        except Exception:
+            e = sys.exc_info()[1]
+            arcpy.AddMessage(e.args[0])
 
-        arcpy.MakeFeatureLayer_management(apFc, "indLyr%s"%FID, "\"FID\" = %s" %FID)
-        #arcpy.CopyFeatures_management("indLyr%s"%FID, "WAPLyrOut%s"%FID)
-        print("Created layer %s" %FID)
+        try:
+            outEucDistance = EucDistance("indLyr%s"%FID, cell_size = rast)
+            print("Created Euclidean Distance of layer %s" % FID)
+            arcpy.AddMessage("Created Euclidean Distance of layer %s" % FID)
+            #outEucDistance.save('dist_%s' %FID)
+        except Exception:
+            e = sys.exc_info()[1]
+            arcpy.AddMessage(e.args[0])
+            #apply friis ect. transmission equations...
 
-        outEucDistance = EucDistance("indLyr%s"%FID, cell_size = rast)
-        print("Created Euclidean Distance of layer %s" % FID)
-        #outEucDistance.save('dist_%s' %FID)
+        try:
+            outFriis = Gt + Gr + Pt + (20 *Log10(lambduh / (4 * 3.14 * outEucDistance * .3048)))
+            print("Created Friis calculation of layer %s" % FID)
+            arcpy.AddMessage("Created Friis calculation of layer %s" % FID)
+            #outFriis.save("friisOut%s.tif" %FID)
+        except Exception:
+            e = sys.exc_info()[1]
+            arcpy.AddMessage(e.args[0])
 
-        #apply friis ect. transmission equations...
+        try:
+            viewShed = Viewshed(rast, "indLyr%s"%FID)
+            arcpy.AddMessage("Created Viewshed of layer %s" % FID)
+            #viewShed.save("viewShedOut%s" %FID)
+        except Exception:
+            e = sys.exc_info()[1]
+            arcpy.AddMessage(e.args[0])
 
-        outFriis = Gt + Gr + Pt + (20 *Log10(lambduh / (4 * 3.14 * outEucDistance * .3048)))
-        print("Created Friis calculation of layer %s" % FID)
-        #outFriis.save("friisOut%s.tif" %FID)
+        try:
+            friisView = viewShed * outFriis
+            friisView.save("friisView%s.tif" %FID)
+            arcpy.AddMessage("Intersect Viewshed and Friis output for layer %s" % FID)
+            friisList.append(str("friisView%s.tif" %FID))
+        except Exception:
+            e = sys.exc_info()[1]
+            arcpy.AddMessage(e.args[0])
 
-        viewShed = Viewshed(rast, "indLyr%s"%FID)
-        #viewShed.save("viewShedOut%s" %FID)
 
-        friisView = viewShed * outFriis
-        friisView.save("friisView%s.tif" %FID)
-
-        friisList.append(str("friisView%s.tif" %FID))
-
-    #statType = []
-    #for i in statType:
-        #if i = True #need this to be if the statType is checked in the tool. for multiple outputs
-
-    outCellStats = CellStatistics(friisList, "MINIMUM", "NODATA", "SINGLE_BAND")
-    cellStatsOut = arcpy.GetParameterAsText(6)
-    outCellStats.save(cellStatsOut)
+    statType = arcpy.GetParameter(5)
+    arcpy.AddMessage(statType)
+    count = 0
+    #statList = statType.split(";")
+    for stat in statType:
+        count+= 1
+        outCellStats = CellStatistics(friisList, stat, "NODATA", "SINGLE_BAND")
+        outCellStats.save(arcpy.GetParameterAsText(6) + "_%s" %stat[:3])
+        arcpy.AddMessage("Aggregated output propagation outputs: %s" %stat)
     print(friisList)
 eucDistance()
