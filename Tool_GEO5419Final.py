@@ -3,13 +3,11 @@ import sys
 from arcpy.sa import *
 from ExtractData import LicenseError
 
-
 path = r"C:\Users\tb1302\Documents\GEO5419\Project\data"
 arcpy.env.workspace = path
 arcpy.env.overwriteOutput = True
 
-
-dataOut = path + "\dataOut"
+#Check out Spatial Extension
 try:
     if arcpy.CheckExtension("Spatial") == "Available":
         arcpy.CheckOutExtension("Spatial")
@@ -21,97 +19,98 @@ except LicenseError:
 except:
     print(arcpy.GetMessages(2))
 
+def transProp():
 
-
-def eucDistance():
-
-    #apFc = path + "\RADIO_POINTS_TXST.shp"
+    # User defined radio points layer input
     apFc = arcpy.GetParameterAsText(0)
-    #rast = path + r"\dem_quad_50cm\dem_quad_50cm.tif"
+    # User defined DEM input
     rast = arcpy.GetParameterAsText(1)
-    studyArea = "\StudyArea.shp"
-    ############################Radio Variables############################
-    #specs for ruckus T610(used at TXST): Gt = 6dBm, Pt = 28dBm
-    #Frequency
-        #ISM (2.4-2.484GHz)
-        #U-NII-1 (5.15-5.25GHz)
-        #U-NII-2A (5.25-5.35GHz)
-        #U-NII-2C (5.47-5.725GHz)
-        #U-NII-3 (5.725-5.85GHz)
-    #Gain:
-        # Up to 6dBm
-    Gt = arcpy.GetParameter(2)#6 # dBm Transmitter Gain () convert from decibels to a power ratio
-    Gr = arcpy.GetParameter(3)#2 #0.0031628 #Watts#2-5 dBd common with mobile phones#Receiver Gain () convert from decibels to a power ratio
-    Pt = arcpy.GetParameter(4)#28# 1 Watts or 28dBm (Transmitter Power (Watts))
+
+    ### User defined Friis Transmission Equation Variables
+    # dBi: Transmitter Gain
+    Gt = arcpy.GetParameter(2)
+    # dBi: Receiver Gain
+    Gr = arcpy.GetParameter(3)
+    #dBm: Transmitter power output
+    Pt = arcpy.GetParameter(4)
     #Pr = to value we are solving for is measured in Watts
     c = 299792458 # speed of light in m/s
-    #f = arcpy.GetParameterAsText(5) * 1000000000 #2400000000 # need to convert Ghz to Hz
-    lambduh = 0.1249 #c/f (c=speed of light in m/s & f=frequency in Hz)
-                    # c = 300,000,000 m/s
+    f = (arcpy.GetParameter(5) * 1000000000) #Frequency -- convert Ghz to Hz
+    lambduh = c/f #speed of light in m/s & f=frequency in Hz
 
+    # Empty list to hold the output name after joining Friis output and Vewshed
     friisList = []
+    # Empty list to hold FID -- used for iterating through individual features
     FIDnum = []
-
+    # Call search cursor with FID field
     with arcpy.da.SearchCursor(apFc, ["FID"]) as cursor:
         for row in cursor:
+            # Append Each FID to FIDnum list
             FIDnum.append(row[0])
-
+    # Iterate through FIDs
     for FID in FIDnum:
         try:
-            # create separate feature layer for each point in the input feature class
+            # Create separate feature layer for each point in the input feature class
             arcpy.MakeFeatureLayer_management(apFc, "indLyr%s"%FID, "\"FID\" = %s" %FID)
-            #arcpy.CopyFeatures_management("indLyr%s"%FID, "WAPLyrOut%s"%FID)
+            # arcpy.CopyFeatures_management("indLyr%s"%FID, "WAPLyrOut%s"%FID)
             print("Created layer %s" %FID)
             arcpy.AddMessage("Created layer %s" %FID)
         except Exception:
+            # Error handling
             e = sys.exc_info()[1]
             arcpy.AddMessage(e.args[0])
 
         try:
+            # Apply Euclidean Distance to each point individually
             outEucDistance = EucDistance("indLyr%s"%FID, cell_size = rast)
-            print("Created Euclidean Distance of layer %s" % FID)
             arcpy.AddMessage("Created Euclidean Distance of layer %s" % FID)
             #outEucDistance.save('dist_%s' %FID)
         except Exception:
+            # Error handling
             e = sys.exc_info()[1]
             arcpy.AddMessage(e.args[0])
-            #apply friis ect. transmission equations...
 
         try:
-            outFriis = Gt + Gr + Pt + (20 *Log10(lambduh / (4 * 3.14 * outEucDistance * .3048)))
-            print("Created Friis calculation of layer %s" % FID)
+            # Apply Friis Equation using user input and each Euclidean Distance output converted to meters
+            outFriis = Gt + Gr + Pt + (20 *Log10(lambduh / (4 * 3.14 * (outEucDistance * .3048))))
             arcpy.AddMessage("Created Friis calculation of layer %s" % FID)
             #outFriis.save("friisOut%s.tif" %FID)
         except Exception:
+            # Error handling
             e = sys.exc_info()[1]
             arcpy.AddMessage(e.args[0])
 
         try:
+            # Perform Viewshed Analysis for each feature layer derived from the input feature class
             viewShed = Viewshed(rast, "indLyr%s"%FID)
             arcpy.AddMessage("Created Viewshed of layer %s" % FID)
-            #viewShed.save("viewShedOut%s" %FID)
+            # ViewShed.save("viewShedOut%s" %FID)
         except Exception:
+            # Error handling
             e = sys.exc_info()[1]
             arcpy.AddMessage(e.args[0])
 
         try:
+            # Multiply Viewshed and Friis outputs -- Viewshed has a boolean output resuting in an intersect with Friis output
             friisView = viewShed * outFriis
             friisView.save("friisView%s.tif" %FID)
             arcpy.AddMessage("Intersect Viewshed and Friis output for layer %s" % FID)
+            # Append output name to aggregate layers with CellStatistics
             friisList.append(str("friisView%s.tif" %FID))
         except Exception:
+            # Error handling
             e = sys.exc_info()[1]
             arcpy.AddMessage(e.args[0])
 
-
-    statType = arcpy.GetParameter(5)
+    # User input for statistic type used in CellStatistics
+    statType = arcpy.GetParameter(6)
     arcpy.AddMessage(statType)
-    count = 0
-    #statList = statType.split(";")
+    # loops through user defined statistic type
     for stat in statType:
-        count+= 1
+        # Perform CellStatistics for each statistic type
         outCellStats = CellStatistics(friisList, stat, "NODATA", "SINGLE_BAND")
-        outCellStats.save(arcpy.GetParameterAsText(6) + "_%s" %stat[:3])
+        # Save output
+        outCellStats.save(arcpy.GetParameterAsText(7) + "_%s" %stat[:3])
         arcpy.AddMessage("Aggregated output propagation outputs: %s" %stat)
-    print(friisList)
-eucDistance()
+
+transProp()
