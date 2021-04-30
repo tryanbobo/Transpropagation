@@ -81,6 +81,7 @@ def transProp():
             arcpy.AddMessage(e.args[0])
 
         try:
+
             # Perform Viewshed Analysis for each feature layer derived from the input feature class
             viewShed = Viewshed(rast, "indLyr%s"%FID)
             arcpy.AddMessage("Created Viewshed of layer %s" % FID)
