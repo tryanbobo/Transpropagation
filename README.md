@@ -5,8 +5,8 @@
 1. [About](#About)
 2. [Requirements](#Requirements)
 3. [Installation](#Installation)
-4. [How it Works](#How it works)
-5. [Inserting Friis Values](#Inserting Friis Values)
+4. [How it Works](#How_it_works)
+5. [Inserting Friis Values](#Inserting_Friis_Values)
 6. [Contributors](#Contributors)
 
 
@@ -14,6 +14,8 @@
 Transpropagation is a flexible, custom tool created using ArcGIS’s Arcpy python module. The user interface is created to allow operators to select multiple variables associated with the Friis Transmission Equation as well as multiple aggregate outputs. The aim of this project is to introduce the Transpropagation ArcGIS tool for modeling outside wireless signal propagation and radio signal transmission power. With the ever-growing Internet of Things, reliable network access has become essential in a wide range of computational tasks. Outdoor wireless access is no exception. Wireless access points (WAPs) are radio devices that provide a cost-effective solution for offering network access to many devices; from monitoring vehicle inventory or facility operations to providing internet access to an end user. There is a vast amount of literature and many proprietary solutions for WSP, but often the technology is locked behind a paywall or created using niche software. The significance of this project lies in its ability to provide large scale, customizable WSP modeling that is built atop an established ArcGIS python tool framework (ESRI 2021). 
 
 ## Requirements
+Access to ESRI's ArcMap or ArcGIS Pro
+
 The two required input parameters include Input Radio Points Feature and an Input DEM.
 ##### [Back to Contents](#contents)
 
