@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Lab_Tasks_Geo5419/.idea/Lab_Tasks_Geo5419.iml" filepath="$PROJECT_DIR$/../Lab_Tasks_Geo5419/.idea/Lab_Tasks_Geo5419.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Siganl-Propagation.iml" filepath="$PROJECT_DIR$/.idea/Siganl-Propagation.iml" />
     </modules>
   </component>
