@@ -20,7 +20,7 @@ The two required input parameters include Input Radio Points Feature and an Inpu
 ##### [Back to Contents](#contents)
 
 ## Installation
-In the Catalog window, ArcToolbox window, or ArcCatalog, right-click either the toolbox or one of its toolsets and click Add Toolbox.
+In the Catalog window, ArcToolbox window, or ArcCatalog, navigate to the tool and select it.
 ##### [Back to Contents](#contents)
 
 ## How it works
@@ -38,8 +38,13 @@ The intersected raster outputs for each point feature are then aggregated using 
 ##### [Back to Contents](#contents)
 
 ## Inserting Friis Values
+
+Custome Friis Values can be intered directly into the tool . 
+
+
 ![img_2](img_2.png)
-*where: 
+
+*where:* 
 
 Pt is the output power to the transmitting antenna in dBm 
 
@@ -55,3 +60,4 @@ R is distance between the transmitting and receiving antennas in meters, and 4 i
 
 
 ## Contributors
+Ryan Bobo (tb1302) is the sole contributor at this time
