@@ -25,9 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="donezoh ...ish">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="added project files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619817950521</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added project files">
+      <created>1619988760244</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619988760244</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,7 +166,8 @@
     <MESSAGE value="worked on coverting py tool to arc tool" />
     <MESSAGE value="tool works with multi output. there does seem to be away to add check boxs with a custom python tool." />
     <MESSAGE value="donezoh ...ish" />
-    <option name="LAST_COMMIT_MESSAGE" value="donezoh ...ish" />
+    <MESSAGE value="added project files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added project files" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1619122987646">
@@ -212,9 +218,9 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1241" y="256" key="Vcs.Push.Dialog.v2/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619817960353" />
-    <state x="977" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619980809356">
+    <state x="977" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619988715351">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="977" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619980809356" />
+    <state x="977" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619988715351" />
   </component>
 </project>
