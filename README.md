@@ -5,8 +5,8 @@
 1. [About](#About)
 2. [Requirements](#Requirements)
 3. [Installation](#Installation)
-4. [How it Works](#How_it_works)
-5. [Inserting Friis Values](#Inserting_Friis_Values)
+4. [How it Works](#How-it-works)
+5. [Inserting Friis Values](#Inserting-Friis-Values)
 6. [Contributors](#Contributors)
 
 
@@ -25,10 +25,14 @@ In the Catalog window, ArcToolbox window, or ArcCatalog, right-click either the 
 
 ## How it works
 The user interface is created to allow operators to select multiple variables associated with the FTE as well as multiple aggregate outputs. The two required input parameters include Input Radio Points Feature and an Input DEM. 
+
 ![UI](UI.JPG)
+
 The geoprocessing used in the tool include Euclidean Distance, Viewshed, Cell Statistics, and Raster Calculator. The propagation output for each point is derived using a Search Cursor iterating through each radio features FID and adds it to a list. This list is then processed through a for loop. Since the majority of analysis is done on each radio point individually, or a subsequent output associated with it, the bulk of the geoprocessing occurs under this same for loop. Additionally, String formatting is used for each tool utilized to name every output layer using its FID as a unique identifier. First, the MakeFeatureLayer tool is applied so that each radio point is separated into its own Feature Layer. The Euclidean Distance tool is then run on each radio point. This values will be used in the Friis calculation. 
 
-The ArcGIS Viewshed tool was applied to each feature layer extracted taking into consideration the OFFSETA value. The OFFSETA values are populated for each feature of the radio dataset based on each points height values, allowing a more accurate propagation output. Additional options such as, OFFSETB, AZUMUTH1, RADIUS1, etc., are available for users to apply if necessary. For our purposes though, the T610 represented in the point feature layer is omni directional, meaning no further visibility options are needed. The viewshed raster output is binary, where 1 is areas with wave propagation and 0 are areas not reached by the signal. At this point the viewshed output is intersected to the corresponding FTE equation considered above by multiplying the two together. The intersected raster outputs for each point feature are then aggregated using Cell Statistics. This process allows users to choose the statistic type and creates an aggregated output for each choice. 
+The ArcGIS Viewshed tool was applied to each feature layer extracted taking into consideration the OFFSETA value. The OFFSETA values are populated for each feature of the radio dataset based on each points height values, allowing a more accurate propagation output. Additional options such as, OFFSETB, AZUMUTH1, RADIUS1, etc., are available for users to apply if necessary.The viewshed raster output is binary, where 1 is areas with wave propagation and 0 are areas not reached by the signal. At this point the viewshed output is intersected to the corresponding FTE equation considered above by multiplying the two together. 
+
+The intersected raster outputs for each point feature are then aggregated using Cell Statistics. This process allows users to choose the statistic type and creates an aggregated output for each choice. 
 
 
 ##### [Back to Contents](#contents)
