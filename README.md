@@ -1,6 +1,6 @@
 # Transpropagation
 **Version 1.0.0**
-
+[Readme](README.html)
 ## Contents
 1. [About](#About)
 2. [Requirements](#Requirements)
@@ -11,7 +11,7 @@
 
 
 ## About
-Transpropagation is a flexible, custom tool created using ArcGIS’s Arcpy python module. The user interface is created to allow operators to select multiple variables associated with the Friis Transmission Equation as well as multiple aggregate outputs. The aim of this project is to introduce the Transpropagation ArcGIS tool for modeling outside wireless signal propagation and radio signal transmission power. With the ever-growing Internet of Things, reliable network access has become essential in a wide range of computational tasks. Outdoor wireless access is no exception. Wireless access points (WAPs) are radio devices that provide a cost-effective solution for offering network access to many devices; from monitoring vehicle inventory or facility operations to providing internet access to an end user. There is a vast amount of literature and many proprietary solutions for WSP, but often the technology is locked behind a paywall or created using niche software. The significance of this project lies in its ability to provide large scale, customizable WSP modeling that is built atop an established ArcGIS python tool framework (ESRI 2021). 
+Transpropagation is a flexible, custom tool created using ArcGIS’s Arcpy python module. The user interface is created to allow operators to select multiple variables associated with the Friis Transmission Equation as well as multiple aggregate outputs. The aim of this project is to introduce the Transpropagation ArcGIS tool for modeling outside wireless signal propagation and radio signal transmission power. With the ever-growing Internet of Things, reliable network access has become essential in a wide range of computational tasks. Outdoor wireless access is no exception. Wireless access points (WAPs) are radio devices that provide a cost-effective solution for offering network access to many devices; from monitoring vehicle inventory or facility operations to providing internet access to an end user. There is a vast amount of literature and many proprietary solutions for WSP, but often the technology is locked behind a paywall or created using niche software. The significance of this tool lies in its ability to provide large scale, customizable WSP modeling that is built atop an established ArcGIS python tool framework. 
 
 ## Requirements
 Access to ESRI's ArcMap or ArcGIS Pro
@@ -24,7 +24,7 @@ In the Catalog window, ArcToolbox window, or ArcCatalog, navigate to the tool an
 ##### [Back to Contents](#contents)
 
 ## How it works
-The user interface is created to allow operators to select multiple variables associated with the FTE as well as multiple aggregate outputs. The two required input parameters include Input Radio Points Feature and an Input DEM. 
+The user interface is created to allow operators to select multiple variables associated with the Friis Transmission Equation (FTE) as well as multiple aggregate outputs. The two required input parameters include Input Radio Points Feature and an Input DEM. 
 
 ![UI](UI.JPG)
 
@@ -39,7 +39,7 @@ The intersected raster outputs for each point feature are then aggregated using 
 
 ## Inserting Friis Values
 
-Custome Friis Values can be intered directly into the tool . 
+Custom Friis Values can be Entered directly into the tool . 
 
 
 ![img_2](img_2.png)
