@@ -25,11 +25,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="added zipped project file">
+    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="added toolbox">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bobo_GEO5419Final.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Signal_Analysis.tbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Signal_Analysis.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +45,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab_Tasks_Geo5419" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -105,7 +102,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -159,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619989451100</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added toolbox">
+      <created>1620075914411</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620075914411</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,60 +184,7 @@
     <MESSAGE value="donezoh ...ish" />
     <MESSAGE value="added project files" />
     <MESSAGE value="added zipped project file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added zipped project file" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1619122987646">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1700" y="278" key="FileChooserDialogImpl/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619122987646" />
-    <state width="1149" height="347" key="GridCell.Tab.0.bottom" timestamp="1619818009467">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1232" height="159" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619362437037" />
-    <state width="1149" height="347" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009467" />
-    <state width="1149" height="347" key="GridCell.Tab.0.center" timestamp="1619818009467">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1232" height="159" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619362437037" />
-    <state width="1149" height="347" key="GridCell.Tab.0.center/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009467" />
-    <state width="1149" height="347" key="GridCell.Tab.0.left" timestamp="1619818009387">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1232" height="159" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619362437037" />
-    <state width="1149" height="347" key="GridCell.Tab.0.left/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009387" />
-    <state width="1149" height="347" key="GridCell.Tab.0.right" timestamp="1619818009467">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1232" height="159" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619362437037" />
-    <state width="1149" height="347" key="GridCell.Tab.0.right/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009467" />
-    <state width="1149" height="347" key="GridCell.Tab.1.bottom" timestamp="1619818009495">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state width="1149" height="347" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009495" />
-    <state width="1149" height="347" key="GridCell.Tab.1.center" timestamp="1619818009495">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state width="1149" height="347" key="GridCell.Tab.1.center/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009495" />
-    <state width="1149" height="347" key="GridCell.Tab.1.left" timestamp="1619818009495">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state width="1149" height="347" key="GridCell.Tab.1.left/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009495" />
-    <state width="1149" height="347" key="GridCell.Tab.1.right" timestamp="1619818009495">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state width="1149" height="347" key="GridCell.Tab.1.right/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619818009495" />
-    <state x="1241" y="256" key="Vcs.Push.Dialog.v2" timestamp="1619817960353">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1241" y="256" key="Vcs.Push.Dialog.v2/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619817960353" />
-    <state x="977" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619988715351">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="977" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619988715351" />
+    <MESSAGE value="added toolbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="added toolbox" />
   </component>
 </project>
