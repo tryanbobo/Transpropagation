@@ -25,7 +25,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="added project files" />
+    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="added zipped project file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bobo_GEO5419Final.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Signal_Analysis.tbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Signal_Analysis.zip" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619988760244</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added zipped project file">
+      <created>1619989451100</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619989451100</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,7 +179,8 @@
     <MESSAGE value="tool works with multi output. there does seem to be away to add check boxs with a custom python tool." />
     <MESSAGE value="donezoh ...ish" />
     <MESSAGE value="added project files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added project files" />
+    <MESSAGE value="added zipped project file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added zipped project file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1619122987646">
