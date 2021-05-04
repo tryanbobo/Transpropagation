@@ -25,8 +25,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="added toolbox">
+    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="edit html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.html" beforeDir="false" afterPath="$PROJECT_DIR$/README.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620075914411</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="edit html">
+      <created>1620080560344</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620080560344</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +194,7 @@
     <MESSAGE value="added project files" />
     <MESSAGE value="added zipped project file" />
     <MESSAGE value="added toolbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="added toolbox" />
+    <MESSAGE value="edit html" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit html" />
   </component>
 </project>
