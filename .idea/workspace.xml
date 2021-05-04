@@ -19,15 +19,16 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:fromHome" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="worked on coverting py tool to arc tool">
+    <list default="true" id="c7345796-f192-415f-afce-d6c4dbc46fac" name="Default Changelist" comment="edit html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tool_GEO5419Final.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tool_GEO5419Final.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.html" beforeDir="false" afterPath="$PROJECT_DIR$/README.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab_Tasks_Geo5419" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -103,7 +104,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -122,7 +123,56 @@
       <option name="project" value="LOCAL" />
       <updated>1619128146221</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="tool works with multi output. there does seem to be away to add check boxs with a custom python tool.">
+      <created>1619362425760</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1619362425760</updated>
+    </task>
+    <task id="LOCAL-00003" summary="donezoh ...ish">
+      <created>1619728195108</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619728195108</updated>
+    </task>
+    <task id="LOCAL-00004" summary="donezoh ...ish">
+      <created>1619817950521</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1619817950521</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added project files">
+      <created>1619988760244</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619988760244</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added zipped project file">
+      <created>1619989451100</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619989451100</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added toolbox">
+      <created>1620075914411</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620075914411</updated>
+    </task>
+    <task id="LOCAL-00008" summary="edit html">
+      <created>1620080560344</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620080560344</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,19 +180,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="fromHome" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -151,52 +189,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="worked on coverting py tool to arc tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="worked on coverting py tool to arc tool" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1700" y="278" key="FileChooserDialogImpl" timestamp="1619122987646">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1700" y="278" key="FileChooserDialogImpl/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619122987646" />
-    <state width="1149" height="159" key="GridCell.Tab.0.bottom" timestamp="1619198944345">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="159" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619198944345" />
-    <state width="1256" height="159" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619189930341" />
-    <state width="1149" height="159" key="GridCell.Tab.0.center" timestamp="1619198944345">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="159" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619198944345" />
-    <state width="1256" height="159" key="GridCell.Tab.0.center/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619189930341" />
-    <state width="1149" height="159" key="GridCell.Tab.0.left" timestamp="1619198944345">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="159" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619198944345" />
-    <state width="1256" height="159" key="GridCell.Tab.0.left/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619189930341" />
-    <state width="1149" height="159" key="GridCell.Tab.0.right" timestamp="1619198944345">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="159" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619198944345" />
-    <state width="1256" height="159" key="GridCell.Tab.0.right/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619189930341" />
-    <state width="1149" height="347" key="GridCell.Tab.1.bottom" timestamp="1619198746999">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state width="1149" height="347" key="GridCell.Tab.1.center" timestamp="1619198746999">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state width="1149" height="347" key="GridCell.Tab.1.left" timestamp="1619198746999">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state width="1149" height="347" key="GridCell.Tab.1.right" timestamp="1619198746999">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1149" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619198746999" />
-    <state x="1241" y="256" key="Vcs.Push.Dialog.v2" timestamp="1619128149312">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1241" y="256" key="Vcs.Push.Dialog.v2/0.0.2560.1040/2560.64.1920.1040@0.0.2560.1040" timestamp="1619128149312" />
+    <MESSAGE value="tool works with multi output. there does seem to be away to add check boxs with a custom python tool." />
+    <MESSAGE value="donezoh ...ish" />
+    <MESSAGE value="added project files" />
+    <MESSAGE value="added zipped project file" />
+    <MESSAGE value="added toolbox" />
+    <MESSAGE value="edit html" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit html" />
   </component>
 </project>
