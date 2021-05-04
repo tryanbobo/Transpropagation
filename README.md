@@ -17,7 +17,7 @@ Transpropagation is a flexible, custom tool created using ArcGIS’s Arcpy pytho
 ## Requirements
 Access to ESRI's ArcMap or ArcGIS Pro
 
-The two required input parameters include Input Radio Points Feature and an Input DEM.
+The two required input parameters include Input Radio Points Feature and Input DEM.
 ##### [Back to Contents](#contents)
 
 ## Installation
